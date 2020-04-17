@@ -8,6 +8,8 @@ module.exports = function(app) {
   // Configure Express
   app.set('view engine', 'ejs');
   require('ejs').delimiter = '$';
+  var cors = require('cors');
+  app.use(cors());
   app.use(bodyParser.urlencoded({
     extended: true
   }));

@@ -34,11 +34,18 @@ const toneAnalyzer = new ToneAnalyzerV3({
 // Bootstrap application settings
 require('./config/express')(app);
 
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3001"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
 app.get('/', function(req, res) {
   res.render('index');
 });
 
 app.post('/api/tone', async function(req, res, next) {
+  console.log(req);
   try {
     const { result } = await toneAnalyzer.tone(req.body);
     res.json(result);
